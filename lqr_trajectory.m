@@ -3,9 +3,9 @@ clc; clear; close all;
 %% Definizione dei parametri del sistema
 
 delta_t = 0.1;   % Passo temporale (s)
-N = 300;         % Orizzonte temporale (numero di passi)
+N = 700;         % Orizzonte temporale (numero di passi)
 g = 9.81;        % Accelerazione gravitazionale (m/s^2)
-m = 2000;        % Massa del sistema (kg)
+m = 1000;        % Massa del sistema (kg)
 beta = 40;       % Coefficiente di attrito
 
 % Matrici del modello dinamico discreto x[k+1] = A*x[k] + B*u[k]
@@ -17,8 +17,8 @@ A = [1, 0, delta_t, 0, 0;
 
 B = [delta_t^2/(2*m), 0;
      0, delta_t^2/(2*m);
-     delta_t, 0;
-     0, delta_t;
+     delta_t/m, 0;
+     0, delta_t/m;
      0, 0];
 
 C = eye(5);   % Osserviamo tutti gli stati
@@ -39,9 +39,9 @@ disp('Parametri del sistema salvati in "data/system_parameters.mat".');
 %% Definizione della traiettoria ottima tramite Linear Quadratic Regulator (LQR)
 addpath('functions');  % Se la cartella è nella stessa directory dello script principale
 % Definizione delle matrici di costo per il controllo LQR
-Q = zeros(5);       % Penalizzazione sugli stati (nessuna penalizzazione intermedia)
+Q = eye(5);       % Penalizzazione sugli stati (nessuna penalizzazione intermedia)
 R = eye(2);         % Penalizzazione sul controllo (identità 2x2)
-Qf = 100 * eye(5);  % Penalizzazione sullo stato finale (può essere modificata)
+Qf = 1e10 * eye(5);  % Penalizzazione sullo stato finale (può essere modificata)
 
 % Esecuzione del controllo ottimo LQR a orizzonte finito
 [x, u, J] = opt_control(A, B, Q, R, Qf, x0, N);
