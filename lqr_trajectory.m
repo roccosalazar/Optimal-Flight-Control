@@ -37,6 +37,7 @@ save('data/system_parameters.mat', 'delta_t', 'N', 'g', 'm', 'beta', 'A', 'B', '
 disp('Parametri del sistema salvati in "data/system_parameters.mat".');
 
 %% Definizione della traiettoria ottima tramite Linear Quadratic Regulator (LQR)
+addpath('functions');  % Se la cartella è nella stessa directory dello script principale
 % Definizione delle matrici di costo per il controllo LQR
 Q = zeros(5);       % Penalizzazione sugli stati (nessuna penalizzazione intermedia)
 R = eye(2);         % Penalizzazione sul controllo (identità 2x2)
