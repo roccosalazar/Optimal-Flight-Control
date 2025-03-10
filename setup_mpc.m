@@ -1,5 +1,5 @@
 %% Script: setup_mpc.m
-% Configura e salva l'oggetto MPC per l'uso in Simulink
+% Configura l'oggetto MPC
 
 clc; clear; close all;
 

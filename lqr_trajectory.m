@@ -3,7 +3,7 @@ clc; clear; close all;
 %% Definizione dei parametri del sistema
 
 delta_t = 0.1;   % Passo temporale (s)
-N = 700;         % Orizzonte temporale (numero di passi)
+N = 1000;         % Orizzonte temporale (numero di passi)
 g = 9.81;        % Accelerazione gravitazionale (m/s^2)
 m = 1000;        % Massa del sistema (kg)
 beta = 40;       % Coefficiente di attrito
