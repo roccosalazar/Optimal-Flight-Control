@@ -45,7 +45,9 @@ for k = 1:num_steps
     % Aggiornamento dello stato
     xk(1) = x_next;
     xk(2) = y_next;
-    xk(3:5) = A(3:5, :) * xk + B(3:5, :) * u_mpc;  % Aggiorna velocità e accelerazione
+    xk(3) = A(3,:) * xk + B(3,:) * u_mpc + wind(1);  % Aggiorna v_x con vento
+    xk(4) = A(4,:) * xk + B(4,:) * u_mpc + wind(2);  % Aggiorna v_y con vento
+    xk(5) = A(5,:) * xk + B(5,:) * u_mpc;           % Aggiorna accelerazione
     
     % Salvataggio delle variabili per analisi
     X_hist(:,k+1) = xk;

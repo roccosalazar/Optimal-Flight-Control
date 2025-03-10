@@ -28,8 +28,8 @@ D = zeros(5,2);  % Nessun legame diretto tra input e output
 x0 = [-9000; 5000; 277; 0; -g];
 
 % Parametri dei disturbi
-Wx_max = 50;      % Massima raffica longitudinale [m/s]
-Wy_max = 50;      % Massima raffica trasversale [m/s]
+Wx_max = 15;      % Massima raffica longitudinale [m/s]
+Wy_max = 15;      % Massima raffica trasversale [m/s]
 p_wind = 0.3;          % Probabilità di una raffica (30% del tempo)
 
 % Salvataggio delle variabili per l'uso in altri script
