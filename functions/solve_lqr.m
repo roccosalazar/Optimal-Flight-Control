@@ -1,4 +1,4 @@
-function [x, u, J] = lqr_control(A, B, Q, R, Qf, x0, N)
+function [x, u, J] = solve_lqr(A, B, Q, R, Qf, x0, N)
 % Calcola il controllo ottimo a orizzonte finito
 % per un sistema lineare stazionario a tempo discreto
 % 

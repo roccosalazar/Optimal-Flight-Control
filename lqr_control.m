@@ -44,7 +44,7 @@ R = eye(2);         % Penalizzazione sul controllo (identità 2x2)
 Qf = 1e10 * eye(5);  % Penalizzazione sullo stato finale (può essere modificata)
 
 % Esecuzione del controllo ottimo LQR a orizzonte finito
-[x, u, J] = lqr_control(A, B, Q, R, Qf, x0, N);
+[x, u, J] = solve_lqr(A, B, Q, R, Qf, x0, N);
 
 % Salvataggio della traiettoria ottima per l'MPC
 x_ref = x; % Memorizza la traiettoria come riferimento per l'MPC
