@@ -55,7 +55,7 @@ disp('Traiettoria di riferimento salvata come data/reference_trajectory.mat.');
 figure;
 
 % Posizione x nel tempo
-subplot(2,3,1);
+subplot(2,3,2);
 plot(1:N+1, x(1,:), 'k.-'); hold on;
 xlabel('Tempo (k)');
 ylabel('Posizione x');
@@ -63,7 +63,7 @@ title('Evoluzione di x');
 grid on;
 
 % Posizione y nel tempo
-subplot(2,3,2);
+subplot(2,3,5);
 plot(1:N+1, x(2,:), 'r.-'); hold on;
 xlabel('Tempo (k)');
 ylabel('Posizione y');
@@ -79,7 +79,7 @@ title('Evoluzione di v_x');
 grid on;
 
 % Velocità y nel tempo
-subplot(2,3,4);
+subplot(2,3,6);
 plot(1:N+1, x(4,:), 'g.-'); hold on;
 xlabel('Tempo (k)');
 ylabel('Velocità v_y');
@@ -87,7 +87,7 @@ title('Evoluzione di v_y');
 grid on;
 
 % Controllo ottimo u_x e u_y
-subplot(2,3,5);
+subplot(2,3,4);
 plot(1:N, u(1,:), 'b.-'); hold on;
 plot(1:N, u(2,:), 'r.-');
 xlabel('Tempo (k)');
@@ -97,11 +97,13 @@ legend('u_x', 'u_y');
 grid on;
 
 % Traiettoria y in funzione di x
-figure;
+subplot(2,3,1)
 plot(x(1,:), x(2,:), 'k.-'); hold on;
 xlabel('Posizione x');
 ylabel('Posizione y');
 title('Traiettoria y in funzione di x');
 grid on;
+
+exportgraphics(gcf, 'results/lqr_control.png', 'Resolution', 300);
 
 disp('Simulazione completata.');

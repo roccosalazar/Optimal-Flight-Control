@@ -57,11 +57,11 @@ disp('Risultati MPC salvati in "data/mpc_results.mat".');
 
 %% Visualizzazione dei risultati
 figure;
-subplot(2,3,1);
+subplot(2,3,2);
 plot(1:num_steps+1, X_hist(1,:), 'k.-'); hold on;
 xlabel('Tempo (k)'); ylabel('Posizione x'); title('Evoluzione di x'); grid on;
 
-subplot(2,3,2);
+subplot(2,3,5);
 plot(1:num_steps+1, X_hist(2,:), 'r.-'); hold on;
 xlabel('Tempo (k)'); ylabel('Posizione y'); title('Evoluzione di y'); grid on;
 
@@ -69,21 +69,23 @@ subplot(2,3,3);
 plot(1:num_steps+1, X_hist(3,:), 'b.-'); hold on;
 xlabel('Tempo (k)'); ylabel('Velocità v_x'); title('Evoluzione di v_x'); grid on;
 
-subplot(2,3,4);
+subplot(2,3,6);
 plot(1:num_steps+1, X_hist(4,:), 'g.-'); hold on;
 xlabel('Tempo (k)'); ylabel('Velocità v_y'); title('Evoluzione di v_y'); grid on;
 
-subplot(2,3,5);
+subplot(2,3,4);
 plot(1:num_steps, U_hist(1,:), 'b.-'); hold on;
 plot(1:num_steps, U_hist(2,:), 'r.-');
 xlabel('Tempo (k)'); ylabel('Forza di controllo');
 title('Controllo MPC');
 legend('u_x', 'u_y'); grid on;
 
-figure;
+subplot(2,3,1)
 plot(X_hist(1,:), X_hist(2,:), 'k.-'); hold on;
 xlabel('Posizione x'); ylabel('Posizione y');
 title('Traiettoria MPC con disturbo atmosferico'); grid on;
+
+exportgraphics(gcf, 'results/mpc_control.png', 'Resolution', 300);
 
 figure;
 subplot(2,1,1);
@@ -95,3 +97,6 @@ subplot(2,1,2);
 plot(1:num_steps, Wind_hist(2,:), 'r.-');
 xlabel('Tempo (k)'); ylabel('Wy');
 title('Andamento del vento Wy'); grid on;
+
+
+exportgraphics(gcf, 'results/wind_variation.png', 'Resolution', 300);
