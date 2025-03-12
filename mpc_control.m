@@ -32,15 +32,11 @@ for k = 1:num_steps
     y_ref = x_ref(:,min(k, size(x_ref,2)));  % Usa la traiettoria di riferimento
     
     % Generazione del vento casuale
-    wind = bernoulli_noise(Wx_max, Wy_max, p_wind);
+    wind = noise_generator(Wx_max, Wy_max, p_wind);
     Wind_hist(:,k) = wind;
     
     % Risoluzione del problema di controllo MPC con stato aggiornato
     u_mpc = mpcmove(mpc_obj, mpc_state, xk, y_ref);  
-    
-    % Applicazione del controllo al sistema con disturbo atmosferico
-    x_next = dynamics_x(xk(1), xk(3), wind(1), delta_t);
-    y_next = dynamics_y(xk(2), xk(4), wind(2), delta_t, g);
     
     % Aggiornamento dello stato
     xk(1) = A(1,:) * xk + B(1,:) * u_mpc + wind(1)*delta_t; 

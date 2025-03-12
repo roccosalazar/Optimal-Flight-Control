@@ -1,5 +1,5 @@
-function wind = bernoulli_noise(Wx_max, Wy_max, p_wind)
-    % Generazione del disturbo atmosferico con distribuzione di Bernoulli
+function wind = noise_generator(Wx_max, Wy_max, p_wind)
+    % Generazione del disturbo atmosferico con distribuzione di Bernoulli eUniforme
     wind = [0; 0]; % Inizializza il vettore vento [Wx; Wy]
 
     if rand < p_wind
