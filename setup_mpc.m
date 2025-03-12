@@ -29,7 +29,6 @@ mpc_obj.MV(2).Max = 2.5e4;   % Forza massima su y
 mpc_obj.Model.Noise = 1e-6 * eye(size(C,1)); % Aggiunge un rumore molto piccolo
 
 
-
 %% Salvataggio dell'oggetto MPC per Simulink
 save('data/mpc_object.mat', 'mpc_obj');  % Salva l'oggetto in un file .mat
 disp('Oggetto MPC creato e salvato in "data/mpc_object.mat".');

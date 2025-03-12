@@ -43,8 +43,8 @@ for k = 1:num_steps
     y_next = dynamics_y(xk(2), xk(4), wind(2), delta_t, g);
     
     % Aggiornamento dello stato
-    xk(1) = x_next;
-    xk(2) = y_next;
+    xk(1) = A(1,:) * xk + B(1,:) * u_mpc + wind(1)*delta_t; 
+    xk(2) = A(2,:) * xk + B(2,:) * u_mpc + wind(2)*delta_t;
     xk(3) = A(3,:) * xk + B(3,:) * u_mpc + wind(1);  % Aggiorna v_x con vento
     xk(4) = A(4,:) * xk + B(4,:) * u_mpc + wind(2);  % Aggiorna v_y con vento
     xk(5) = A(5,:) * xk + B(5,:) * u_mpc;           % Aggiorna accelerazione
