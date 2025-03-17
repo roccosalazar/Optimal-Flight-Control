@@ -52,7 +52,8 @@ save('data/reference_trajectory.mat', 'x_ref'); % Salva il file per uso futuro
 disp('Traiettoria di riferimento salvata come data/reference_trajectory.mat.');
 
 % Plot della traiettoria ottima
-figure;
+figure('Position', [100, 100, 1400, 700]); % Imposta una figura più larga
+
 
 % Posizione x nel tempo
 subplot(2,3,2);
