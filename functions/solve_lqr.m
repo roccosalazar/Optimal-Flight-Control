@@ -1,18 +1,4 @@
 function [x, u, J] = solve_lqr(A, B, Q, R, Qf, x0, N)
-% Calcola il controllo ottimo a orizzonte finito
-% per un sistema lineare stazionario a tempo discreto
-% 
-% INPUT:
-% A, B   - Matrici del sistema
-% Q, R   - Matrici del funzionale di costo
-% Qf     - Matrice del costo finale
-% x0     - Condizione iniziale
-% N      - Orizzonte di tempo
-%
-% OUTPUT:
-% x      - Traiettoria ottima degli stati
-% u      - Controllo ottimo
-% J      - Valore della funzione di costo ottimizzata
 
 n = size(A, 1); % Dimensione dello stato
 p = size(B, 2); % Dimensione dell’ingresso
@@ -42,5 +28,4 @@ end
 
 % Aggiunta del termine di costo finale
 J = J + x(:,N+1)' * Qf * x(:,N+1);
-
 end

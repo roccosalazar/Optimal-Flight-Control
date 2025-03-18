@@ -38,10 +38,11 @@ disp('Parametri del sistema salvati in "data/system_parameters.mat".');
 
 %% Definizione della traiettoria ottima tramite Linear Quadratic Regulator (LQR)
 addpath('functions');  % Se la cartella è nella stessa directory dello script principale
+
 % Definizione delle matrici di costo per il controllo LQR
-Q = eye(5);       % Penalizzazione sugli stati (nessuna penalizzazione intermedia)
-R = eye(2);         % Penalizzazione sul controllo (identità 2x2)
-Qf = 1e10 * eye(5);  % Penalizzazione sullo stato finale (può essere modificata)
+Q = eye(5);       % Penalizzazione sugli stati
+R = eye(2);         % Penalizzazione sul controllo
+Qf = 1e10 * eye(5);  % Penalizzazione sullo stato finale
 
 % Esecuzione del controllo ottimo LQR a orizzonte finito
 [x, u, J] = solve_lqr(A, B, Q, R, Qf, x0, N);
