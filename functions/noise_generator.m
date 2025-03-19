@@ -1,8 +1,8 @@
 function v_wind = noise_generator()
-    % Parametri della distribuzione Weibull (stimati)
-    k = 1.8;      % Parametro di forma
-    lambda_w = 20;  % Parametro di scala (rinominato per evitare conflitti)
+    % Parametri della distribuzione Gamma
+    shape = 2;       % Parametro di forma k (shape)
+    scale = 0.4;     % Parametro di scala theta (scale)
 
-    % Generazione del valore del vento secondo Weibull
-    v_wind = wblrnd(lambda_w, k);
+    % Generazione del valore del vento
+    v_wind = gamrnd(shape, scale);
 end
